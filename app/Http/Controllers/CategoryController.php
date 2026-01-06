@@ -32,7 +32,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category =[
+            'name'=>$request->cat_name
+        ];
+        Category::create($category);
+        return redirect('/dashboard');
     }
 
     /**

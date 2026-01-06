@@ -92,7 +92,7 @@
     <div class="content">
         <div class="card">
             <div class="card-body">
-                <h4 class="text-black">Categorys Table <span class="pull-right"><button class="btn btn-primary">New Category</button></span></h4>
+                <h4 class="text-black">Categorys Table <span class="pull-right"><a href="{{route('category.create')}}" class="btn btn-primary">New Category</a></span></h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
