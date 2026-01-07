@@ -92,6 +92,10 @@
     <div class="content">
         <div class="card">
             <div class="card-body">
+                @if(session('success')) 
+                    <div class="alert alert-success">{{session('success')}}</div>
+                @endif
+                
                 <h4 class="text-black">Categorys Table <span class="pull-right"><a href="{{route('category.create')}}" class="btn btn-primary">New Category</a></span></h4>
                 <div class="table-responsive">
                     <table class="table">
@@ -105,12 +109,18 @@
                         <tbody>
                             @foreach($cats as $cat)
                             <tr>
-                                <th scope="row">{{$cat->id}}</th>
-                                <td>{{$cat->name}}</td>
-                                <td>
-                                    <i class="fa fa-pencil-square"></i>
-                                    <i class="fa fa-trash-o"></i>
-                                </td>
+                                <form action="{{route('category.destroy', $cat->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <th scope="row">{{$cat->id}}</th>
+                                    <td>{{$cat->name}}</td>
+                                    <td>
+                                        <!-- <i  class="fa fa-pencil-square"></i> -->
+                                        <a href="{{route('category.edit', $cat->id)}}" class="btn btn-primary">Edit</a>
+                                        <!-- <i class="fa fa-trash-o"></i> -->
+                                        <button  class="btn btn-danger">Delete</button>
+                                    </td>
+                                </form>
                             </tr>
                             @endforeach
                         </tbody>

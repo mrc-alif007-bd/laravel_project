@@ -32,11 +32,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //  Validation
+        $request->validate(
+            [
+                'cat_name'=> 'required|max:10|min:3|unique:categories,name'
+            ],
+            [
+                'required'=> 'Category name is required',
+                'max' => 'Category name must be 3 to 10 letter',
+                'min' => 'Category name must be 3 to 10 letter',
+                'unique' => 'Category name is already taken'
+
+            ]
+        );
+
+
+        // Data......
         $category =[
             'name'=>$request->cat_name
         ];
         Category::create($category);
-        return redirect('/dashboard');
+        return redirect()->route('category.index')->with('success', 'Category added');
     }
 
     /**
@@ -52,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.category.edit');
+        return view('backend.category.edit',compact('category'));
     }
 
     /**
@@ -60,7 +76,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+          $request->validate(
+            [
+                'cat_name'=> 'required|max:10|min:3|unique:categories,name'
+            ],
+            [
+                'required'=> 'Category name is required',
+                'max' => 'Category name must be 3 to 10 letter',
+                'min' => 'Category name must be 3 to 10 letter',
+                'unique' => 'Category name is already taken'
+
+            ]
+        );
+        //dd($request);
+        $data=[
+            'name'=>$request->cat_name
+        ];
+        $category->update($data);
+        return redirect()->route('category.index')->with('success','Successfully Updeted');
     }
 
     /**
@@ -68,6 +102,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        // dd($category);
+        $category->delete();
+        return redirect()->route('category.index')->with('success','Successfully Deleted');
     }
 }
