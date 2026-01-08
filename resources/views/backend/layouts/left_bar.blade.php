@@ -12,13 +12,14 @@
       <!-- sidebar menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">PERSONAL</li>
-        <li class="treeview"> <a href="#"> <i class="ti-email"></i> <span>Products</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="treeview"> <a href="#"> <i class="ti-email"></i> <span>Categorys</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="apps-mailbox.html"><i class="fa fa-angle-right"></i> All products</a></li>
-            <li><a href="/category/create "><i class="fa fa-angle-right"></i> Add products</a></li>
             <li><a href="/category"><i class="fa fa-angle-right"></i> Category</a></li>
+            <li><a href="/product"><i class="fa fa-angle-right"></i> All Products</a></li>
+            <li><a href="/product/create "><i class="fa fa-angle-right"></i> Add Product</a></li>
+            
           </ul>
-        </li>        
+        </li>                
       </ul>
     </div>
     <!-- /.sidebar --> 
