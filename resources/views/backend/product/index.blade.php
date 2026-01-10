@@ -92,10 +92,10 @@
     <div class="content">
         <div class="card">
             <div class="card-body">
-                @if(session('success')) 
-                    <div class="alert alert-success">{{session('success')}}</div>
+                @if(session('success'))
+                <div class="alert alert-success">{{session('success')}}</div>
                 @endif
-                
+
                 <h4 class="text-black">Products Table <span class="pull-right"><a href="{{route('product.create')}}" class="btn btn-primary">New Product</a></span></h4>
                 <div class="table-responsive">
                     <table class="table">
@@ -106,7 +106,7 @@
                                 <th scope="col">sku</th>
                                 <th scope="col">Stock</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Category id</th>                           
+                                <th scope="col">Category id</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -117,16 +117,16 @@
                                     @csrf
                                     @method('delete')
                                     <th scope="row">{{$item->id}}</th>
-                                    <td >{{$item->name}}</td>
-                                    <td >{{$item->sku}}</td>
-                                    <td >{{$item->stock}}</td>
-                                    <td >{{$item->price}}</td>
-                                    <td>{{$item->categories_id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->sku}}</td>
+                                    <td>{{$item->stock}}</td>
+                                    <td>{{$item->price}}</td>
+                                    <td>{{$item->category->name}}</td>
                                     <td>
                                         <!-- <i  class="fa fa-pencil-square"></i> -->
                                         <a href="{{route('product.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                                         <!-- <i class="fa fa-trash-o"></i> -->
-                                        <button  class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger">Delete</button>
                                     </td>
                                 </form>
                             </tr>
