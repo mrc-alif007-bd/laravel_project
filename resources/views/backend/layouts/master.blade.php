@@ -4,10 +4,21 @@
 <body class="skin-blue sidebar-mini">
 <div class="wrapper boxed-wrapper">
 <!-- header-->
+
+@if(Auth::guard('web')->check())
  @include ("backend.layouts.header")
+@elseif(Auth::guard('admin')->check())
+ @include ("backend.layouts.adminHeader")
+ @endif
 <!--/ header-->
   <!-- Left side column. contains the logo and sidebar -->
-   @include ("backend.layouts.left_bar")
+
+  @if(Auth::guard('web')->check())
+ @include ("backend.layouts.left_bar")
+@elseif(Auth::guard('admin')->check())
+ @include ("backend.layouts.adminLeft_bar")
+ @endif
+   
   <!-- Left side column. contains the logo and sidebar -->
   
   <!-- Content Wrapper. Contains page content -->
