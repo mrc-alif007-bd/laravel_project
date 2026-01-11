@@ -16,7 +16,7 @@ class LoginController extends Controller
         return view ('auth.admin_login');
     }
 
-     public function store(Request $request): RedirectResponse
+     public function store(Request $request)
     {
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
