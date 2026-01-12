@@ -5,19 +5,23 @@
 <div class="wrapper boxed-wrapper">
 <!-- header-->
 
-@if(Auth::guard('web')->check())
- @include ("backend.layouts.header")
-@elseif(Auth::guard('admin')->check())
- @include ("backend.layouts.adminHeader")
- @endif
+  @if(Auth::guard('web')->check())
+  @include ("backend.layouts.header")
+  @elseif(Auth::guard('admin')->check())
+  @include ("backend.layouts.adminHeader")
+  @elseif(Auth::guard('manager')->check())
+  @include ("backend.layouts.managerHeader")
+  @endif
 <!--/ header-->
   <!-- Left side column. contains the logo and sidebar -->
 
-  @if(Auth::guard('web')->check())
- @include ("backend.layouts.left_bar")
-@elseif(Auth::guard('admin')->check())
- @include ("backend.layouts.adminLeft_bar")
- @endif
+    @if(Auth::guard('web')->check())
+  @include ("backend.layouts.left_bar")
+  @elseif(Auth::guard('admin')->check())
+  @include ("backend.layouts.adminLeft_bar")
+  @elseif(Auth::guard('manager')->check())
+  @include ("backend.layouts.managerLeft_bar")
+  @endif
    
   <!-- Left side column. contains the logo and sidebar -->
   
